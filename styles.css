@@ -1,0 +1,98 @@
+/* CSS Variables */
+:root {
+    --primary-color: #ff69b4;
+    --secondary-color: #fff;
+    --background-color: #000;
+    --font-family: 'Arial', sans-serif;
+    --twinkle-duration: 10s;
+}
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font-family);
+    color: var(--secondary-color);
+}
+
+/* Space-themed background */
+.space-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('images/anime-space-background.png') no-repeat center center fixed;
+    background-size: cover;
+    animation: twinkle var(--twinkle-duration) infinite alternate;
+}
+
+/* Twinkle effect for the background */
+@keyframes twinkle {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.2); }
+}
+
+/* Message styling */
+.message-container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    max-width: 80%;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.signature {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #ffb6c1; /* Light pink */
+}
+
+/* Falling hearts canvas */
+#hearts-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1; /* Behind content */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .message-container {
+        top: 10%;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
