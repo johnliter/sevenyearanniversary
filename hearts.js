@@ -2,11 +2,17 @@ const canvas = document.getElementById("hearts-canvas");
 const ctx = canvas.getContext("2d");
 
 // Set canvas dimensions
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function setCanvasSize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+setCanvasSize();
 
 const hearts = [];
 const colors = ["#ff4d6d", "#ff6b81", "#ff878d", "#ffb3c1", "#ffc2d1"];
+
+// Check for reduced motion preference
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 class Heart {
     constructor() {
@@ -46,7 +52,8 @@ class Heart {
 
 // Create hearts
 function createHearts() {
-    for (let i = 0; i < 100; i++) {
+    const heartCount = prefersReducedMotion ? 50 : 100; // Fewer hearts if reduced motion is preferred
+    for (let i = 0; i < heartCount; i++) {
         hearts.push(new Heart());
     }
 }
@@ -61,10 +68,11 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Resize canvas on window resize
+// Resize canvas and reset hearts on window resize
 window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    setCanvasSize();
+    hearts.length = 0; // Clear hearts array
+    createHearts(); // Recreate hearts
 });
 
 // Start animation

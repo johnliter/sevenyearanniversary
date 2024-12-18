@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Celebrate the 7th anniversary with a special message and falling hearts animation.">
+    <meta property="og:title" content="Happy Anniversary, Christina!">
+    <meta property="og:description" content="Celebrate love with a personalized message and beautiful falling hearts animation.">
+    <meta property="og:image" content="images/anime-space-background.png">
+    <meta property="og:type" content="website">
     <title>Happy Anniversary, Christina!</title>
+    <link rel="preload" href="images/anime-space-background.png" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <style>
+        body {
+            background-color: #000000;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="space-background">
         <!-- Anniversary Message -->
-        <div class="message-container">
+        <div class="message-container" role="main" aria-label="Anniversary Message">
             <h1>Happy 7th Anniversary, Christina! 🚀❤️</h1>
             <p>
                 To the love of my life, my co-pilot in this adventure through the stars, <br>
@@ -21,7 +33,7 @@
         </div>
         
         <!-- Canvas for falling hearts -->
-        <canvas id="hearts-canvas"></canvas>
+        <canvas id="hearts-canvas" aria-hidden="true"></canvas>
     </div>
     
     <!-- JavaScript for falling hearts -->
